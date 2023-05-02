@@ -3147,3 +3147,9 @@ details-disclosure > details {
     100% { transform: rotate(360deg) translateX(1em) rotate(-360deg) scale(1.2); }
   }
 }
+
+.banner__heading {
+  color: red;
+  font-size: 20px;
+  font-weight: 600;
+}
