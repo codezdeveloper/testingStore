@@ -452,3 +452,9 @@
     color: currentColor;
   }
 }
+
+.banner__heading {
+  color: red;
+  font-size: 20px;
+  font-weight: 600;
+}
