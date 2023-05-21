@@ -1,1 +1,79 @@
-{"sections":{"image_banner":{"type":"image-banner","blocks":{"heading":{"type":"heading","settings":{"heading":"Browse our latest products","heading_size":"h0"}},"button":{"type":"buttons","settings":{"button_label_1":"Shop all","button_link_1":"shopify:\/\/collections\/all","button_style_secondary_1":true,"button_label_2":"","button_link_2":"","button_style_secondary_2":false}}},"block_order":["heading","button"],"settings":{"image_overlay_opacity":40,"image_height":"large","desktop_content_position":"bottom-center","show_text_box":false,"desktop_content_alignment":"center","color_scheme":"background-1","image_behavior":"none","mobile_content_alignment":"center","stack_images_on_mobile":false,"show_text_below":false}},"featured_collection":{"type":"featured-collection","settings":{"title":"Featured products","heading_size":"h2","description":"","show_description":false,"description_style":"body","collection":"all","products_to_show":8,"columns_desktop":4,"full_width":false,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":false,"color_scheme":"background-1","image_ratio":"adapt","show_secondary_image":true,"show_vendor":false,"show_rating":false,"enable_quick_add":false,"columns_mobile":"2","swipe_on_mobile":false,"padding_top":44,"padding_bottom":36}}},"order":["image_banner","featured_collection"]}
+{
+  "sections": {
+    "258f5f84-2f6f-4e72-973e-92da9ea004c9": {
+      "type": "main-homepage-animated-slider",
+      "blocks": {
+        "a8478c84-5230-4ad7-ac5d-ffff7efe065d": {
+          "type": "main-animated-slider",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/silver-lamp-on-a-white-table-next-to-books_1.jpg",
+            "slide_image-mob": "shopify:\/\/shop_images\/silver-lamp-on-a-white-table-next-to-books_2.jpg"
+          }
+        },
+        "952aa1ba-3b21-44ec-b65a-e65fbd124c62": {
+          "type": "main-animated-slider",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset_1.jpg",
+            "slide_image-mob": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset_2.jpg"
+          }
+        },
+        "b388337e-a530-4ce0-b2d9-96bde5b15386": {
+          "type": "main-animated-slider",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/cozy-reading-in-bed_1.jpg",
+            "slide_image-mob": "shopify:\/\/shop_images\/cozy-reading-in-bed_2.jpg"
+          }
+        },
+        "cb483cce-6b2a-4042-b83e-6f77eb0b93c9": {
+          "type": "main-animated-slider",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/rooibos-tea_1.jpg",
+            "slide_image-mob": "shopify:\/\/shop_images\/rooibos-tea_2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "a8478c84-5230-4ad7-ac5d-ffff7efe065d",
+        "952aa1ba-3b21-44ec-b65a-e65fbd124c62",
+        "b388337e-a530-4ce0-b2d9-96bde5b15386",
+        "cb483cce-6b2a-4042-b83e-6f77eb0b93c9"
+      ],
+      "settings": {
+      }
+    },
+    "aef4a24b-5b43-4abf-9ca7-3b6c6d18623c": {
+      "type": "main-homepage-animated-second-slider",
+      "blocks": {
+        "cee29f55-df3e-467a-adf5-ec8b7ba9e548": {
+          "type": "main-animated-slider-two",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/silver-lamp-on-a-white-table-next-to-books_2.jpg"
+          }
+        },
+        "690a8cd2-1dab-433b-8e7f-2d6542e970e8": {
+          "type": "main-animated-slider-two",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset_2.jpg"
+          }
+        },
+        "af5219ba-2187-415d-9942-5d7601d13777": {
+          "type": "main-animated-slider-two",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/cozy-reading-in-bed_2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "cee29f55-df3e-467a-adf5-ec8b7ba9e548",
+        "690a8cd2-1dab-433b-8e7f-2d6542e970e8",
+        "af5219ba-2187-415d-9942-5d7601d13777"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "258f5f84-2f6f-4e72-973e-92da9ea004c9",
+    "aef4a24b-5b43-4abf-9ca7-3b6c6d18623c"
+  ]
+}

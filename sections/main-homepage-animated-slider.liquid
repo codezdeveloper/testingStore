@@ -1,0 +1,233 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.min.css" />
+
+<style>
+  
+  .slick--slider {}
+
+  .slick--slider.desktop {
+    display: block;
+  }
+
+  .slick--slider.mobile {
+    display: none;
+  }
+  
+  .slick--slider .slider-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .thumbnail_wrapper {
+    width: 100px;
+    height: 100px;
+    position: relative;
+  }
+  
+  .slick--slider .slick-next {
+    width: auto;
+    height: auto;
+    
+    top: auto;
+    right: initial;
+    bottom: 20%;
+    left: 20%;
+    transform: translate(-20%, -20%);
+  }
+
+  .slick--slider .slick-next:before {
+    display: none;
+  }
+  
+  .slick--slider .slick-next img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);    
+    
+    width: 65px;
+    height: 65px;
+    display: block;
+    object-fit: cover;
+  }
+
+  .slick--slider .slick-prev {    
+    display: none !important;
+    left: 10px;
+    z-index: 1;
+    width: auto;
+    height: auto;
+  }
+
+  .thumbnail_wrapper .next-slideLabel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 16px;
+    font-weight: normal;
+    color: #fff;
+    letter-spacing: 0.1em;
+  }
+  
+  .square-origin {
+    fill: transparent;
+    stroke: rgb(255, 255, 255);
+    stroke-width: 10;
+    stroke-linecap: square;
+    stroke-dasharray: 400px;
+    stroke-dashoffset: 400px;
+  }
+
+  .slick-next.slick-arrow {}
+  
+  .slick-next.slick-arrow.active .square-origin {
+    animation: progress 5s;
+  }
+
+  @keyframes progress {
+    0% {
+      stroke-dashoffset: 400px;
+    }
+  
+    100% {
+      stroke-dashoffset: 0px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .slick--slider.desktop {
+      display: none;
+    }
+
+    .slick--slider.mobile {
+      display: block;
+    }
+  }
+</style>
+
+<div class="main-{{ section.id }}">
+
+  <div class="slick--slider desktop">
+    {% for block in section.blocks %}
+      <div class="slide slider-image">
+        <img src="{{ block.settings.slide_image | img_url: 'master' }}">
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="slick--slider mobile">
+    {% for block in section.blocks %}
+      <div class="slide slider-image">
+        <img src="{{ block.settings.slide_image-mob | img_url: 'master' }}">
+      </div>
+    {% endfor %}
+  </div>
+  
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.js"></script>
+
+<script>
+
+    // Desktop  Version Code  
+  
+    $(".slick--slider.desktop").on("init", function(event, slick) {
+      console.log(slick.currentSlide);
+      let nextSRC = $('.desktop .slick-current.slick-active').next().find('img').attr('src')
+      console.log(nextSRC, "Showing Images");
+      $(".desktop .slick-next.slick-arrow").removeClass('active');
+      $(".desktop .slick-next.slick-arrow").addClass('active');
+      $(".desktop .slick-next.slick-arrow").html(`<div class="thumbnail_wrapper"><svg class="progress" width="100" height="100"><rect class="square-origin" width="100" height="100"></rect></svg><img src="${ nextSRC }" /><span class="next-slideLabel">Next</span></div>`);
+    });
+  
+    $(".slick--slider.desktop").slick({
+      dots: false,
+      arrows: true,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 4500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      pauseOnHover: false,
+      pauseOnFocus: false
+    });
+  
+    $('.slick--slider.desktop').on('afterChange', function(slick, currentSlide) {
+      console.log(currentSlide.currentSlide + 1, currentSlide.slideCount, currentSlide.currentSlide, currentSlide);
+      let nextSRC = $('.desktop .slick-current.slick-active').next().find('img').attr('src')
+      console.log(nextSRC, "Showing Images");
+      $(".desktop .slick-next.slick-arrow").removeClass('active');
+      $(".desktop .slick-next.slick-arrow").addClass('active');
+      $(".desktop .slick-next.slick-arrow").html(`<div class="thumbnail_wrapper"><svg class="progress" width="100" height="100"><rect class="square-origin" width="100" height="100"></rect></svg><img src="${ nextSRC }" /><span class="next-slideLabel">Next</span></div>`);
+    });
+
+  
+    // Mobile Version Code
+  
+    $(".slick--slider.mobile").on("init", function(event, slick) {
+      console.log(slick.currentSlide);
+      let nextSRC = $('.mobile .slick-current.slick-active').next().find('img').attr('src')
+      console.log(nextSRC, "Showing Images");
+      $(".mobile .slick-next.slick-arrow").removeClass('active');
+      $(".mobile .slick-next.slick-arrow").addClass('active');
+      $(".mobile .slick-next.slick-arrow").html(`<div class="thumbnail_wrapper"><svg class="progress" width="100" height="100"><rect class="square-origin" width="100" height="100"></rect></svg><img src="${ nextSRC }" /><span class="next-slideLabel">Next</span></div>`);
+    });
+  
+    $(".slick--slider.mobile").slick({
+      dots: false,
+      arrows: true,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 4500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      pauseOnHover: false,
+      pauseOnFocus: false      
+    });
+  
+    $('.slick--slider.mobile').on('afterChange', function(slick, currentSlide) {
+      console.log(currentSlide.currentSlide + 1, currentSlide.slideCount, currentSlide.currentSlide, currentSlide);
+      let nextSRC = $('.mobile .slick-current.slick-active').next().find('img').attr('src')
+      console.log(nextSRC, "Showing Images");
+      $(".mobile .slick-next.slick-arrow").removeClass('active');
+      $(".mobile .slick-next.slick-arrow").addClass('active');
+      $(".mobile .slick-next.slick-arrow").html(`<div class="thumbnail_wrapper"><svg class="progress" width="100" height="100"><rect class="square-origin" width="100" height="100"></rect></svg><img src="${ nextSRC }" /><span class="next-slideLabel">Next</span></div>`);
+    });
+  
+</script>
+
+{% schema %}
+  {
+    "name": "Main Animated Slider",
+    "settings": [],
+    "blocks": [
+      {
+        "name": "Main Animated Slider",
+        "type": "main-animated-slider",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "slide_image",
+            "label": "Slide Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "slide_image-mob",
+            "label": "Slide Image Mob"
+          }  
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Main Animated Slider",
+        "category": "Main Animated Slider"
+      }
+    ]
+  }
+{% endschema %}

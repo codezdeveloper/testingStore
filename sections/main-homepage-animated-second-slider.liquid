@@ -1,0 +1,183 @@
+{{ 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css' | stylesheet_tag }}
+
+<style>
+
+  .main-{{ section.id }} {
+    width: 100%;
+    max-width: 1280px;
+    margin: 60px auto;
+  }
+  
+  @media (min-width:768px) {
+          
+    .owl-item:not(.active) {
+      opacity: 0;
+      transition: 0.3s;
+    }
+    
+    .owl-item.active:not(.big) {
+      opacity: 1;
+      z-index: 0;
+      transition: 0.3s;
+    }
+    
+    .owl-item.active.left {
+      opacity: 1;
+      transform: rotate(-20deg) scale(.8);
+      z-index: 0;
+      transition: 0.3s;
+    }
+    
+    .owl-item.active.right {
+      opacity: 1;
+      transform: rotate(20deg) scale(.8);
+      z-index: 0;
+      transition: 0.3s;
+    }
+    
+    .owl-item.big {
+      opacity: 1;
+      z-index: 10;
+      transform: scale(1);
+    }
+
+    .owl-carousel .owl-item img {
+      height: 450px;
+      object-fit: contain;
+    }
+    
+  }
+
+  @media (max-width: 767px) {
+    
+    .main-{{ section.id }} {
+      padding: 0 20px;
+    }
+  
+    .owl-item:not(.active) {
+      opacity: 0;
+      transform: scale(.6);
+      transition: 0.3s;
+    }
+    
+    .owl-item.active:not(.big) {
+      opacity: 1;
+      transform: scale(.8);
+      z-index: 0;
+      transition: 0.3s;
+    }
+
+    .owl-item.active.left {
+      transform: rotate(-20deg) scale(.8);
+    }
+    
+    .owl-item.active.right {
+      transform: rotate(20deg) scale(.8);
+    }
+    
+    .owl-item.big {
+      opacity: 1;
+      z-index: 10;
+    }
+    
+  }
+  
+</style>
+
+<div class="main-{{ section.id }}">
+  <div class="owl-carousel">
+    {% for block in section.blocks %}
+      <div class='img-wrapper'>
+        <img src="{{ block.settings.slide_image | img_url: 'master' }}" alt="">
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{{ 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js' | script_tag }}
+
+<script>
+  
+  $('.owl-carousel').owlCarousel({
+    margin: -100,
+    autoplay: false,
+    center: false,
+    loop: true,
+    nav: false,
+    dots: true,
+    // stagePadding: 60,
+    onInitialized: owlInit,
+    responsiveClass: true,
+    responsive: {
+      0: {
+        items: 3,
+      },
+      600: {
+        items: 3,
+      },
+      1000: {
+        items: 3,
+      }
+    }
+  });
+  
+  $('.owl-carousel').on('initialize.owl.carousel initialized.owl.carousel translate.owl.carousel changed.owl.carousel', function(e) {
+    
+    idx = e.item.index;
+    
+    $('.owl-item.left').removeClass('left');
+    $('.owl-item.big').removeClass('big');
+    $('.owl-item.right').removeClass('right'); 
+    // $('.owl-item.medium').removeClass('medium');
+    
+    $('.owl-item').eq(idx).addClass('left');
+    $('.owl-item').eq(idx + 1).addClass('big');
+    $('.owl-item').eq(idx + 2).addClass('right');  
+    
+    // $('.owl-item.big').eq(idx - 1).addClass('medium');
+    // $('.owl-item').eq(idx + 1).addClass('medium');
+    
+  });
+  
+  function owlInit() {
+    $('.owl-carousel .owl-item.active:eq(0)').addClass('left');
+    $('.owl-carousel .owl-item.active:eq(1)').addClass('big');
+    $('.owl-carousel .owl-item.active:eq(2)').addClass('right');
+  }
+  
+  $('.owl-carousel .img-wrapper').each( function( index ) {
+    $(this).attr( 'data-position', index );  // NB: .attr() instead of .data()
+  });
+  
+  $(document).on('click', '.owl-item.active', function() {
+    var $speed = 300;  // in ms
+    $('.owl-carousel').trigger('to.owl.carousel', [$(this).find('.img-wrapper').data( 'position' ), $speed] );
+  });
+    
+</script>
+
+{% schema %}
+  {
+    "name": "Main Animated Slider Two",
+    "settings": [],
+    "blocks": [
+      {
+        "name": "Main Animated Slider Two",
+        "type": "main-animated-slider-two",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "slide_image",
+            "label": "Slide Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Main Animated Slider Two",
+        "category": "Main Animated Slider Two"
+      }
+    ]
+  }
+{% endschema %}
